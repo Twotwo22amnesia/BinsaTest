@@ -1,0 +1,44 @@
+﻿@model BinsaTest.Models.ContactosCliente
+
+@{
+    ViewData["Title"] = "Edit";
+} 
+
+<h4>Editar Contacto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group visually-hidden">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <input asp-for="ClienteId" class="form-control" />
+                <span asp-validation-for="ClienteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" onkeypress='return validaNumericos(event)' class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="bottons-group">
+                <input type="submit" value="Editar" class="btn btn-primary" />
+                <a class="cancelEditarContacto btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div> 
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

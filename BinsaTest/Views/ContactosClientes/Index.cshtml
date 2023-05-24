@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BinsaTest.Models.ContactosCliente>
+
+@{
+    ViewData["Title"] = "Index";
+    var cliente = (Clientes)ViewBag.cliente;
+} 
+<h1>Contactos</h1>
+
+<p>
+    <a class="createContacto-dialog-window btn btn-primary" asp-action="Create" asp-route-ClienteId="@cliente.Id">Nuevo Contacto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr> 
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr> 
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a class="editContacto-dialog-window btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="deleteContacto-dialog-window btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="Clientes" asp-action="Index">Clientes</a>
+</div>
+
+<div class="modal fade" id="createContacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#17a2b8;color:white;">
+                <h2 class="modal-title">Nuevo registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal fade" id="editarContacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:dimgrey;color:white;">
+                <h2 class="modal-title">Editar registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal fade" id="deleteContacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red;color:black;">
+                <h2 class="modal-title">Eliminar registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 

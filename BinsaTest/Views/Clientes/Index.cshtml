@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BinsaTest.Models.Clientes>
+
+
+<h1>Clientes</h1>
+
+<p>
+    <a class="createCliente-dialog-window btn btn-primary" class="btn btn-primary" asp-action="Create">Nuevo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoPostal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poblacion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domicilio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Poblacion)
+            </td>
+            <td>
+                <a class="editCliente-dialog-window btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-info" asp-controller="ContactosClientes" asp-action="Index" asp-route-ClienteId="@item.Id" asp-route-id="@item.Id">Contactos</a> |
+                <a class="deleteCliente-dialog-window btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="modal fade" id="createCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#17a2b8;color:white;">
+                <h2 class="modal-title">Nuevo registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal fade" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:dimgrey;color:white;">
+                <h2 class="modal-title">Editar registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal fade" id="deleteCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red;color:black;">
+                <h2 class="modal-title">Eliminar registro</h2>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div> 
